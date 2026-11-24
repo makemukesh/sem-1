@@ -1,0 +1,36 @@
+{
+    "feature_columns": [
+        "temperature",
+        "humidity",
+        "pressure",
+        "wind_speed",
+        "rain_lag_1",
+        "rain_lag_2",
+        "rain_lag_3",
+        "rain_roll_mean_7",
+        "rain_roll_sum_7",
+        "rain_roll_max_7",
+        "rain_roll_mean_14",
+        "temp_lag_1",
+        "humidity_lag_1",
+        "pressure_diff_1",
+        "sin_day_of_year",
+        "cos_day_of_year",
+        "is_monsoon"
+    ],
+    "num_features": 17,
+    "regression_target": "rainfall",
+    "classification_target": "rainfall_category",
+    "train_period": [
+        "2015-01-15",
+        "2022-01-04"
+    ],
+    "val_period": [
+        "2022-01-05",
+        "2023-07-04"
+    ],
+    "test_period": [
+        "2023-07-05",
+        "2024-12-31"
+    ]
+}

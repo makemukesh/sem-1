@@ -1,0 +1,3 @@
+task,metric,mean,std
+Regression,RMSE,11.2315,1.3454
+Classification,Macro F1,0.414,0.0232

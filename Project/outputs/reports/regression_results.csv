@@ -1,0 +1,7 @@
+model,mae,rmse,r2,wet_day_mae
+Baseline Mean,9.776,16.023,-0.0049,18.795
+Linear Regression,6.605,12.534,0.3851,12.997
+Ridge Regression,6.6,12.533,0.3852,12.995
+Decision Tree,6.282,12.327,0.4053,13.705
+Random Forest,5.847,11.194,0.5095,12.143
+Gradient Boosting,5.904,11.21,0.5082,12.994

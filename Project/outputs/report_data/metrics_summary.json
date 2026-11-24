@@ -1,0 +1,373 @@
+{
+  "dataset": {
+    "rows": 15279,
+    "cols": 12,
+    "start": "1985-01-01",
+    "end": "2026-10-31",
+    "years": 42,
+    "station": "Metropolis Central Station",
+    "missing": 0,
+    "duplicates": 0,
+    "rain_mean": 2.09,
+    "rain_median": 0.0,
+    "rain_std": 10.33,
+    "rain_max": 339.9,
+    "rain_p95": 10.5,
+    "rain_p99": 42.94,
+    "dry_days": 11214,
+    "dry_pct": 73.39,
+    "wet_days": 4065,
+    "wet_pct": 26.61,
+    "annual_mean": 759.4,
+    "monsoon_share": 95.27,
+    "temp_min": 13.6,
+    "temp_max": 38.6,
+    "hum_min": 8.0,
+    "hum_max": 98.0,
+    "press_min": 980.7,
+    "press_max": 1015.4,
+    "wind_min": 5.4,
+    "wind_max": 57.5,
+    "train_rows": 12223,
+    "test_rows": 3056,
+    "train_start": "1985-01-01",
+    "train_end": "2018-06-19",
+    "test_start": "2018-06-20",
+    "test_end": "2026-10-31",
+    "category_counts": {
+      "Dry / Trace": 11214,
+      "Light": 2410,
+      "Moderate": 1113,
+      "Heavy": 422,
+      "Torrential": 120
+    },
+    "category_pct": {
+      "Dry / Trace": 73.39,
+      "Light": 15.77,
+      "Moderate": 7.28,
+      "Heavy": 2.76,
+      "Torrential": 0.79
+    },
+    "target_corr": {
+      "rainfall": 1.0,
+      "temperature": -0.021,
+      "humidity": 0.367,
+      "pressure": -0.285,
+      "wind_speed": 0.179
+    },
+    "monthly_top": {
+      "7": 12866.0,
+      "8": 9751.0,
+      "9": 4870.0
+    },
+    "annual_min": 140.0,
+    "annual_max": 1617.0,
+    "annual_mean_total": 759.4,
+    "annual_std_total": 354.9,
+    "prev_equals_rain": false
+  },
+  "regression": [
+    {
+      "Model": "Two-Stage Hurdle Model",
+      "MAE": 1.775,
+      "RMSE": 6.264,
+      "R2": 0.6465,
+      "WetMAE": 4.924,
+      "DryMAE": 0.062,
+      "Bias": 0.038,
+      "TrainTime": 2.31
+    },
+    {
+      "Model": "Random Forest",
+      "MAE": 1.835,
+      "RMSE": 6.635,
+      "R2": 0.6035,
+      "WetMAE": 5.069,
+      "DryMAE": 0.075,
+      "Bias": 0.135,
+      "TrainTime": 2.88
+    },
+    {
+      "Model": "Gradient Boosting",
+      "MAE": 1.848,
+      "RMSE": 6.883,
+      "R2": 0.5732,
+      "WetMAE": 5.01,
+      "DryMAE": 0.127,
+      "Bias": -0.006,
+      "TrainTime": 9.47
+    },
+    {
+      "Model": "Linear Regression (OLS)",
+      "MAE": 2.936,
+      "RMSE": 8.247,
+      "R2": 0.3874,
+      "WetMAE": 6.693,
+      "DryMAE": 0.891,
+      "Bias": 0.235,
+      "TrainTime": 0.04
+    },
+    {
+      "Model": "Ridge Regression",
+      "MAE": 2.931,
+      "RMSE": 8.256,
+      "R2": 0.386,
+      "WetMAE": 6.701,
+      "DryMAE": 0.878,
+      "Bias": 0.221,
+      "TrainTime": 0.04
+    },
+    {
+      "Model": "Decision Tree",
+      "MAE": 2.232,
+      "RMSE": 10.242,
+      "R2": 0.0551,
+      "WetMAE": 6.178,
+      "DryMAE": 0.084,
+      "Bias": 0.118,
+      "TrainTime": 0.11
+    },
+    {
+      "Model": "Baseline Mean",
+      "MAE": 3.937,
+      "RMSE": 10.596,
+      "R2": -0.0114,
+      "WetMAE": 7.747,
+      "DryMAE": 1.863,
+      "Bias": -1.124,
+      "TrainTime": 0.66
+    },
+    {
+      "Model": "Baseline Persistence (Lag-1)",
+      "MAE": 3.076,
+      "RMSE": 11.06,
+      "R2": -0.102,
+      "WetMAE": 8.553,
+      "DryMAE": 0.095,
+      "Bias": 0.0,
+      "TrainTime": 0.0
+    }
+  ],
+  "classification": [
+    {
+      "Model": "Random Forest",
+      "Accuracy": 0.8253,
+      "MacroPrecision": 0.6974,
+      "MacroRecall": 0.6689,
+      "MacroF1": 0.678,
+      "WeightedF1": 0.8296
+    },
+    {
+      "Model": "Logistic Regression",
+      "Accuracy": 0.8024,
+      "MacroPrecision": 0.6064,
+      "MacroRecall": 0.6911,
+      "MacroF1": 0.6372,
+      "WeightedF1": 0.8093
+    },
+    {
+      "Model": "Decision Tree",
+      "Accuracy": 0.8086,
+      "MacroPrecision": 0.5961,
+      "MacroRecall": 0.6364,
+      "MacroF1": 0.6106,
+      "WeightedF1": 0.811
+    },
+    {
+      "Model": "Gradient Boosting",
+      "Accuracy": 0.824,
+      "MacroPrecision": 0.6694,
+      "MacroRecall": 0.5685,
+      "MacroF1": 0.6065,
+      "WeightedF1": 0.8141
+    },
+    {
+      "Model": "Baseline Majority",
+      "Accuracy": 0.6476,
+      "MacroPrecision": 0.1295,
+      "MacroRecall": 0.2,
+      "MacroF1": 0.1572,
+      "WeightedF1": 0.5091
+    }
+  ],
+  "per_class_rf": {
+    "Dry / Trace": {
+      "precision": 0.964,
+      "recall": 0.907,
+      "f1-score": 0.934,
+      "support": 1979.0
+    },
+    "Heavy": {
+      "precision": 0.609,
+      "recall": 0.592,
+      "f1-score": 0.6,
+      "support": 142.0
+    },
+    "Light": {
+      "precision": 0.605,
+      "recall": 0.773,
+      "f1-score": 0.678,
+      "support": 576.0
+    },
+    "Moderate": {
+      "precision": 0.614,
+      "recall": 0.558,
+      "f1-score": 0.585,
+      "support": 328.0
+    },
+    "Torrential": {
+      "precision": 0.696,
+      "recall": 0.516,
+      "f1-score": 0.593,
+      "support": 31.0
+    }
+  },
+  "cv": {
+    "folds": [
+      {
+        "Fold": "Fold 1",
+        "TrainSize": 2549,
+        "ValSize": 2546,
+        "R2": 0.4941,
+        "RMSE": 6.389,
+        "MAE": 1.158
+      },
+      {
+        "Fold": "Fold 2",
+        "TrainSize": 5095,
+        "ValSize": 2546,
+        "R2": 0.6862,
+        "RMSE": 4.604,
+        "MAE": 0.908
+      },
+      {
+        "Fold": "Fold 3",
+        "TrainSize": 7641,
+        "ValSize": 2546,
+        "R2": 0.618,
+        "RMSE": 7.744,
+        "MAE": 1.612
+      },
+      {
+        "Fold": "Fold 4",
+        "TrainSize": 10187,
+        "ValSize": 2546,
+        "R2": 0.5408,
+        "RMSE": 8.557,
+        "MAE": 1.64
+      },
+      {
+        "Fold": "Fold 5",
+        "TrainSize": 12733,
+        "ValSize": 2546,
+        "R2": 0.6848,
+        "RMSE": 5.733,
+        "MAE": 1.59
+      }
+    ],
+    "mean_r2": 0.6048,
+    "std_r2": 0.086,
+    "mean_rmse": 6.605
+  },
+  "tuning": {
+    "best_params": {
+      "max_depth": 10,
+      "min_samples_split": 2,
+      "n_estimators": 50
+    },
+    "cv_rmse": 7.191,
+    "test_metrics": {
+      "MAE": 1.811,
+      "RMSE": 6.453,
+      "R2": 0.6249,
+      "WetMAE": 4.999,
+      "DryMAE": 0.076,
+      "Bias": 0.127
+    }
+  },
+  "feature_importance": {
+    "humidity": 0.5265,
+    "wind_speed": 0.1925,
+    "pressure": 0.0416,
+    "pressure_diff_1": 0.0351,
+    "temperature": 0.032,
+    "temp_lag_1": 0.0276,
+    "rain_lag_1": 0.0191,
+    "rain_lag_2": 0.0182,
+    "rain_lag_3": 0.0174,
+    "rain_roll_mean_14": 0.0166,
+    "sin_day_of_year": 0.0165,
+    "cos_day_of_year": 0.0135,
+    "humidity_lag_1": 0.013,
+    "rain_roll_max_7": 0.0124,
+    "rain_roll_sum_7": 0.0093,
+    "rain_roll_mean_7": 0.0087,
+    "is_monsoon": 0.0001
+  },
+  "monthly_sum": {
+    "Jan": 58.6,
+    "Feb": 39.0,
+    "Mar": 81.8,
+    "Apr": 53.2,
+    "May": 184.4,
+    "Jun": 2900.6,
+    "Jul": 12865.5,
+    "Aug": 9750.7,
+    "Sep": 4869.7,
+    "Oct": 888.1,
+    "Nov": 149.4,
+    "Dec": 55.5
+  },
+  "annual": {
+    "1985": 353.7,
+    "1986": 144.9,
+    "1987": 140.0,
+    "1988": 831.9,
+    "1989": 516.4,
+    "1990": 1074.2,
+    "1991": 341.4,
+    "1992": 502.2,
+    "1993": 611.4,
+    "1994": 836.8,
+    "1995": 300.5,
+    "1996": 510.4,
+    "1997": 913.4,
+    "1998": 483.2,
+    "1999": 276.2,
+    "2000": 373.9,
+    "2001": 454.0,
+    "2002": 300.0,
+    "2003": 790.4,
+    "2004": 863.6,
+    "2005": 1077.3,
+    "2006": 1617.0,
+    "2007": 1091.5,
+    "2008": 783.9,
+    "2009": 592.7,
+    "2010": 1089.5,
+    "2011": 819.7,
+    "2012": 563.1,
+    "2013": 916.9,
+    "2014": 693.2,
+    "2015": 610.6,
+    "2016": 712.2,
+    "2017": 1578.0,
+    "2018": 751.1,
+    "2019": 1237.1,
+    "2020": 1015.1,
+    "2021": 1050.1,
+    "2022": 1014.7,
+    "2023": 1035.9,
+    "2024": 1335.1,
+    "2025": 945.6,
+    "2026": 747.7
+  },
+  "hurdle_prob_weighted": {
+    "MAE": 1.779,
+    "RMSE": 6.181,
+    "R2": 0.6558,
+    "WetMAE": 4.829,
+    "DryMAE": 0.119,
+    "Bias": -0.0
+  }
+}

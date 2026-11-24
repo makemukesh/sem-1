@@ -1,0 +1,86 @@
+{
+  "project": "RainVision",
+  "trained_at_utc": "2026-11-03T06:35:18.099608+00:00",
+  "data_file": "data\\RainVision_Historical_1985_to_Today.xlsx",
+  "training_records": 14050,
+  "training_date_range": [
+    "1985-01-15",
+    "2023-07-04"
+  ],
+  "holdout_records": 546,
+  "holdout_date_range": [
+    "2023-07-05",
+    "2024-12-31"
+  ],
+  "feature_columns": [
+    "temperature",
+    "humidity",
+    "pressure",
+    "wind_speed",
+    "rain_lag_1",
+    "rain_lag_2",
+    "rain_lag_3",
+    "rain_roll_mean_7",
+    "rain_roll_sum_7",
+    "rain_roll_max_7",
+    "rain_roll_mean_14",
+    "temp_lag_1",
+    "humidity_lag_1",
+    "pressure_diff_1",
+    "sin_day_of_year",
+    "cos_day_of_year",
+    "is_monsoon"
+  ],
+  "models": {
+    "regression": {
+      "file": "regression_model.joblib",
+      "algorithm": "Ordinary Least Squares",
+      "training_time_s": 0.0648,
+      "holdout_metrics": {
+        "r2_score": 0.1499,
+        "mae_mm": 7.715,
+        "rmse_mm": 15.029
+      }
+    },
+    "random_forest": {
+      "file": "random_forest_model.joblib",
+      "algorithm": "Random Forest: 150 trees, max_depth=6",
+      "training_time_s": 0.6752,
+      "holdout_metrics": {
+        "r2_score": -0.4405,
+        "mae_mm": 7.845,
+        "rmse_mm": 19.563
+      }
+    },
+    "gradient_boosting": {
+      "file": "gradient_boosting_model.joblib",
+      "algorithm": "Gradient Boosting: 140 trees, learning_rate=0.08, max_depth=5",
+      "training_time_s": 6.4419,
+      "holdout_metrics": {
+        "r2_score": -1.2203,
+        "mae_mm": 9.28,
+        "rmse_mm": 24.288
+      }
+    },
+    "hurdle": {
+      "file": "hurdle_model.joblib",
+      "algorithm": "Two-stage Random Forest occurrence classifier and wet-day regressor",
+      "training_time_s": 0.6804,
+      "holdout_metrics": {
+        "r2_score": -0.0801,
+        "mae_mm": 7.159,
+        "rmse_mm": 16.94
+      }
+    },
+    "ensemble": {
+      "file": "ensemble_model.joblib",
+      "algorithm": "Random Forest (60%) + Gradient Boosting (40%)",
+      "training_time_s": null,
+      "holdout_metrics": {
+        "r2_score": 0.5228,
+        "mae_mm": 5.932,
+        "rmse_mm": 11.26
+      }
+    }
+  }
+}

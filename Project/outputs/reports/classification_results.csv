@@ -1,0 +1,6 @@
+model,accuracy,precision_macro,recall_macro,f1_macro,f1_weighted
+Baseline Majority,0.7059,0.1765,0.25,0.2069,0.5842
+Logistic Regression,0.5551,0.4229,0.4343,0.3933,0.6299
+Decision Tree,0.5993,0.4402,0.4455,0.4118,0.6669
+Random Forest,0.7132,0.4365,0.4957,0.45,0.7376
+Gradient Boosting,0.7739,0.3997,0.4039,0.3934,0.7428

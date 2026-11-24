@@ -1,0 +1,11 @@
+metric,value
+initial_rows,3656
+empty_rows_dropped,1
+duplicate_rows_dropped,2
+final_cleaned_rows,3653
+raw_missing_per_col,"{'Date': 1, 'Location': 1, ' Temperature ': 2, 'Humidity': 2, 'Pressure': 2, 'Wind Speed': 1, 'Previous Rainfall': 1, 'Rainfall': 1}"
+cleaned_missing_per_col,"{'date': 0, 'location': 0, 'temperature': 0, 'humidity': 0, 'pressure': 0, 'wind_speed': 0, 'previous_rainfall': 0, 'rainfall': 0}"
+date_start,2015-01-01
+date_end,2024-12-31
+location,Metropolis Central Station
+physical_boundary_status,"{'temperature': {'below_physical_min': 0, 'above_physical_max': 0, 'actual_min': 13.6, 'actual_max': 41.1, 'domain_valid': True}, 'humidity': {'below_physical_min': 0, 'above_physical_max': 0, 'actual_min': 35.7, 'actual_max': 98.5, 'domain_valid': True}, 'pressure': {'below_physical_min': 0, 'above_physical_max': 0, 'actual_min': 992.2888543201976, 'actual_max': 1021.6, 'domain_valid': True}, 'wind_speed': {'below_physical_min': 0, 'above_physical_max': 0, 'actual_min': 10.5, 'actual_max': 50.83641314324748, 'domain_valid': True}, 'rainfall': {'below_physical_min': 0, 'above_physical_max': 0, 'actual_min': 0.0, 'actual_max': 149.7, 'domain_valid': True}}"

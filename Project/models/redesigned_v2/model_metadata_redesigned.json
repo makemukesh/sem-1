@@ -1,0 +1,54 @@
+{
+    "project": "RainVision: Climate Analytics & Rainfall Forecasting",
+    "version": "2.0.0-redesigned",
+    "architecture_tier": "Production Redesigned ML Suite (V2)",
+    "zero_overwrite_policy": "STRICT_ISOLATION - models/ untouched, written exclusively to models/redesigned_v2/",
+    "serialization_timestamp": "2026-10-23 22:26:58",
+    "training_records": 3093,
+    "features": [
+        "temperature",
+        "humidity",
+        "pressure",
+        "wind_speed",
+        "rain_lag_1",
+        "rain_lag_2",
+        "rain_lag_3",
+        "rain_roll_mean_7",
+        "rain_roll_sum_7",
+        "rain_roll_max_7",
+        "rain_roll_mean_14",
+        "temp_lag_1",
+        "humidity_lag_1",
+        "pressure_diff_1",
+        "sin_day_of_year",
+        "cos_day_of_year",
+        "is_monsoon"
+    ],
+    "models": {
+        "primary_regressor": {
+            "type": "RedesignedEnsembleRegressor",
+            "components": "RandomForestRegressor (60%) + GradientBoostingRegressor (40%)",
+            "test_r2": 0.5066,
+            "test_rmse_mm": 11.45,
+            "file": "rainvision_regressor_redesigned.joblib"
+        },
+        "two_stage_hurdle": {
+            "type": "TwoStageHurdleRegressor",
+            "components": "Occurrence Classifier (Stage 1) + Severity Regressor (Stage 2)",
+            "file": "rainvision_hurdle_regressor_redesigned.joblib"
+        },
+        "primary_classifier": {
+            "type": "RedesignedVotingClassifier",
+            "components": "Soft Voting: Balanced Random Forest (1.2) + Gradient Boosting (1.0)",
+            "test_accuracy_pct": 76.56,
+            "test_weighted_f1": 0.7574,
+            "classes": [
+                "No Rain",
+                "Light",
+                "Moderate",
+                "Heavy"
+            ],
+            "file": "rainvision_classifier_redesigned.joblib"
+        }
+    }
+}

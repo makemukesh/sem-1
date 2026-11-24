@@ -1,0 +1,40 @@
+{
+    "num_rows": 3656,
+    "num_cols": 8,
+    "columns": [
+        "date",
+        "location",
+        "temperature",
+        "humidity",
+        "pressure",
+        "wind_speed",
+        "previous_rainfall",
+        "rainfall"
+    ],
+    "dtypes": {
+        "date": "object",
+        "location": "object",
+        "temperature": "float64",
+        "humidity": "float64",
+        "pressure": "float64",
+        "wind_speed": "float64",
+        "previous_rainfall": "float64",
+        "rainfall": "float64"
+    },
+    "missing_counts": {
+        "date": 1,
+        "location": 1,
+        "temperature": 2,
+        "humidity": 2,
+        "pressure": 2,
+        "wind_speed": 1,
+        "previous_rainfall": 1,
+        "rainfall": 1
+    },
+    "total_missing_cells": 11,
+    "duplicate_rows": 2,
+    "memory_usage_mb": 0.6346263885498047,
+    "date_min": "2015-01-01",
+    "date_max": "2024-12-31",
+    "total_days_span": 3653
+}

@@ -1,0 +1,40 @@
+{
+    "timestamp": "2026-11-02T12:11:34.061045",
+    "feature_columns": [
+        "temperature",
+        "humidity",
+        "pressure",
+        "wind_speed",
+        "rain_lag_1",
+        "rain_lag_2",
+        "rain_lag_3",
+        "rain_roll_mean_7",
+        "rain_roll_sum_7",
+        "rain_roll_max_7",
+        "rain_roll_mean_14",
+        "temp_lag_1",
+        "humidity_lag_1",
+        "pressure_diff_1",
+        "sin_day_of_year",
+        "cos_day_of_year",
+        "is_monsoon"
+    ],
+    "categories": [
+        "Dry / Trace",
+        "Light",
+        "Moderate",
+        "Heavy",
+        "Torrential"
+    ],
+    "models": {
+        "random_forest": {
+            "r2_score": 0.3485
+        },
+        "linear_regression": {
+            "r2_score": 0.3486
+        },
+        "hurdle_model": {
+            "r2_score": 0.1834
+        }
+    }
+}

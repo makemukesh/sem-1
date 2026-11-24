@@ -1,0 +1,5 @@
+Scenario,Temp (°C),Humidity (%),Pressure (hPa),Original RF (mm),Redesigned Blend (mm),Redesigned Hurdle (mm),Gated Final (mm),Predicted Category,Advisory
+Scenario 1: Dry Winter Day (Ahmedabad Jan),18.5,35.0,1018.5,2.32,1.54,0.54,0.0,No Rain,Dry conditions expected. Normal outdoor activities and agricultural operations may proceed.
+Scenario 2: Hot Summer Heatwave (May Pre-Monsoon),41.5,42.0,1005.0,10.63,8.47,6.58,8.47,Moderate,Moderate rainfall predicted. Potential water accumulation in low-lying spots. Drive with caution.
+Scenario 3: Active Monsoon Shower (July),27.5,86.0,999.5,21.52,17.17,50.56,17.17,Heavy,HEAVY RAINFALL WARNING: Significant precipitation (>15 mm) expected. High risk of localized urban waterlogging and traffic disruption.
+Scenario 4: Severe Cyclonic Storm (August),25.0,97.5,991.0,110.51,110.62,61.22,110.62,Heavy,HEAVY RAINFALL WARNING: Significant precipitation (>15 mm) expected. High risk of localized urban waterlogging and traffic disruption.

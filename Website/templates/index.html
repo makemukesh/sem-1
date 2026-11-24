@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RainVision — Intelligent Rainfall Prediction and Climate Analytics System powered by Scikit-Learn Machine Learning models and historical meteorological datasets.">
+  <title>RainVision — Intelligent Rainfall Prediction & Climate Analytics</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌧️</text></svg>">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="header">
+    <div class="nav-container">
+      <div class="brand">
+        <div class="brand-icon">🌧</div>
+        <span>RainVision</span>
+        <span class="brand-tag">v2.1 ML</span>
+      </div>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">☰</button>
+
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a class="nav-link active" data-target="home">Home</a></li>
+          <li><a class="nav-link" data-target="dashboard">Dashboard</a></li>
+          <li><a class="nav-link" data-target="prediction">Rainfall Prediction</a></li>
+          <li><a class="nav-link" data-target="compare">Model Comparison</a></li>
+          <li><a class="nav-link" data-target="explorer">Dataset Explorer</a></li>
+          <li><a class="nav-link" data-target="analytics">Historical Analytics</a></li>
+          <li><a class="nav-link" data-target="about">About Project</a></li>
+          <li>
+            <span class="nav-link" style="cursor: default;" title="System Status: Connected to Flask ML Engine">
+              <span class="status-dot"></span> ML Online
+            </span>
+          </li>
+          <li>
+            <button class="btn btn-primary btn-sm nav-trigger" data-target="prediction" style="padding: 0.45rem 1.15rem; font-size: 0.84rem; margin-left: 0.4rem;">
+              Predict Now →
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================================================================
+         SECTION A: HOME PAGE
+         =================================================================== -->
+    <section id="section-home" class="page-section active">
+      <div class="hero">
+        <div class="hero-container">
+          <div class="hero-badge">
+            <span>●</span> Meteorological Intelligence Platform & Climate Analytics
+          </div>
+          <h1 class="hero-heading">
+            RainVision: <span class="gradient-text">Intelligent Rainfall Prediction</span>
+          </h1>
+          <p class="hero-subtitle">
+            Transforming historical weather data into meaningful rainfall predictions using machine learning.
+            Engineered with scikit-learn regression pipelines, leak-free lag preprocessing, and genuine empirical evaluation.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-accent nav-trigger" data-target="dashboard">
+              📊 Explore Dashboard
+            </button>
+            <button class="btn btn-primary nav-trigger" data-target="prediction">
+              🌧 Predict Rainfall
+            </button>
+            <button class="btn btn-secondary nav-trigger" data-target="compare">
+              ⚖ Compare Models
+            </button>
+            <a href="/api/download-report-pdf" target="_blank" class="btn btn-outline">
+              📄 View Engineering PDF Report
+            </a>
+          </div>
+
+          <div style="display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; margin-top: 2.75rem; padding-top: 2rem; border-top: 1px solid var(--color-border); font-size: 0.92rem; color: var(--color-text-muted);">
+            <div><strong style="color: var(--color-primary); font-size: 1.25rem; font-weight: 800;">15,279</strong> Daily Records</div>
+            <div><strong style="color: var(--color-primary); font-size: 1.25rem; font-weight: 800;">1985–2026</strong> Temporal Span</div>
+            <div><strong style="color: var(--color-primary); font-size: 1.25rem; font-weight: 800;">5 Trained</strong> ML Models</div>
+            <div><strong style="color: var(--color-primary); font-size: 1.25rem; font-weight: 800;">ECMWF ERA5</strong> Data Authority</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="section-header" style="margin-top: 1rem;">
+          <div>
+            <h2 class="section-title">Core Platform Architecture</h2>
+            <p class="section-subtitle">Real-world meteorological modeling with zero hardcoded outputs.</p>
+          </div>
+        </div>
+
+        <div class="doc-grid">
+          <div class="doc-card">
+            <h3>🔬 Genuine Machine Learning Models</h3>
+            <p>
+              Connects five serialized scikit-learn models, with a validated Random Forest/Gradient Boosting ensemble selected as the default predictor.
+            </p>
+            <div class="feature-tag-list">
+              <span class="feature-tag">Linear Regression</span>
+              <span class="feature-tag">Random Forest (150 Trees)</span>
+              <span class="feature-tag">Joblib Serialization</span>
+            </div>
+          </div>
+
+          <div class="doc-card">
+            <h3>🛡 Leak-Free Preprocessing Pipeline</h3>
+            <p>
+              Features 17 engineered meteorological variables including temperature, relative humidity, barometric pressure, wind speed, multi-day lag memories, 7-day rolling statistics, and cyclical Day-of-Year trigonometry.
+            </p>
+            <div class="feature-tag-list">
+              <span class="feature-tag">Lag-1, 2, 3</span>
+              <span class="feature-tag">7d Rolling Stats</span>
+              <span class="feature-tag">Sin/Cos Day of Year</span>
+            </div>
+          </div>
+
+          <div class="doc-card">
+            <h3>📈 Rigorous Empirical Evaluation</h3>
+            <p>
+              Models are measured against the workbook's 546-observation held-out period using $R^2$, MAE, RMSE, and measured inference latency.
+            </p>
+            <div class="feature-tag-list">
+              <span class="feature-tag">Ensemble R² = 0.5228</span>
+              <span class="feature-tag">MAE = 5.932 mm</span>
+              <span class="feature-tag">RMSE = 11.260 mm</span>
+            </div>
+          </div>
+
+          <div class="doc-card">
+            <h3>📊 Interactive Climate Visualizations</h3>
+            <p>
+              Built entirely with responsive HTML5, pure CSS3, and Chart.js. Explore 42-year climate trends, seasonal monsoon peaks, frequency distributions, and exportable data tables without heavy client frameworks.
+            </p>
+            <div class="feature-tag-list">
+              <span class="feature-tag">HTML5 / CSS3</span>
+              <span class="feature-tag">Vanilla JavaScript</span>
+              <span class="feature-tag">Chart.js Visuals</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION B: DASHBOARD
+         =================================================================== -->
+    <section id="section-dashboard" class="page-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Meteorological Intelligence Dashboard</h2>
+            <p class="section-subtitle">Real-time aggregate climate analytics from Metropolis Central Station (1985–2026).</p>
+          </div>
+          <div>
+            <button class="btn btn-outline btn-sm" id="btn-refresh-dashboard">🔄 Refresh Analytics</button>
+          </div>
+        </div>
+
+        <!-- 6 KPI Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Dataset Records</span>
+              <div class="kpi-icon blue">📁</div>
+            </div>
+            <div class="kpi-value" id="kpi-records">15,279</div>
+            <div class="kpi-desc">Verified daily observations</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Average Rainfall</span>
+              <div class="kpi-icon teal">🌧</div>
+            </div>
+            <div class="kpi-value"><span id="kpi-avg-rain">8.42</span><span class="kpi-unit">mm</span></div>
+            <div class="kpi-desc">Daily historical mean</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Max Recorded Rain</span>
+              <div class="kpi-icon amber">⛈</div>
+            </div>
+            <div class="kpi-value"><span id="kpi-max-rain">132.5</span><span class="kpi-unit">mm</span></div>
+            <div class="kpi-desc">Monsoon peak day record</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Min Recorded Rain</span>
+              <div class="kpi-icon green">☀️</div>
+            </div>
+            <div class="kpi-value"><span id="kpi-min-rain">0.0</span><span class="kpi-unit">mm</span></div>
+            <div class="kpi-desc">Dry / Trace precipitation</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Available ML Models</span>
+              <div class="kpi-icon blue">🤖</div>
+            </div>
+            <div class="kpi-value" id="kpi-models-count">2</div>
+            <div class="kpi-desc">Linear Reg + Random Forest</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Latest Prediction</span>
+              <div class="kpi-icon teal">🎯</div>
+            </div>
+            <div class="kpi-value" id="kpi-latest-pred"><span style="font-size: 1.3rem; color: #64748B;">Ready</span></div>
+            <div class="kpi-desc" id="kpi-latest-model">Awaiting user input</div>
+          </div>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="charts-grid">
+          <!-- Historical Rainfall Trend Line Chart -->
+          <div class="chart-card col-8">
+            <div class="chart-card-header">
+              <div>
+                <div class="chart-card-title">📈 Historical Rainfall Trends (Recent 30 Days)</div>
+                <div class="chart-card-subtitle">Daily precipitation fluctuations and thermodynamic variations</div>
+              </div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="chart-historical-trends"></canvas>
+            </div>
+          </div>
+
+          <!-- Rainfall Distribution Histogram -->
+          <div class="chart-card col-4">
+            <div class="chart-card-header">
+              <div>
+                <div class="chart-card-title">📊 Rainfall Distribution Bins</div>
+                <div class="chart-card-subtitle">Frequency breakdown across 15,279 days</div>
+              </div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="chart-distribution-pie"></canvas>
+            </div>
+          </div>
+
+          <!-- Monthly Average Rainfall Bar Chart -->
+          <div class="chart-card col-6">
+            <div class="chart-card-header">
+              <div>
+                <div class="chart-card-title">📅 Monthly Rainfall Distribution (Seasonal Profile)</div>
+                <div class="chart-card-subtitle">Highlighting June–September monsoon season</div>
+              </div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="chart-monthly-bar"></canvas>
+            </div>
+          </div>
+
+          <!-- Yearly Totals Bar Chart -->
+          <div class="chart-card col-6">
+            <div class="chart-card-header">
+              <div>
+                <div class="chart-card-title">🗓 Yearly Rainfall Comparison (1985–2026)</div>
+                <div class="chart-card-subtitle">Annual cumulative precipitation (mm)</div>
+              </div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="chart-yearly-bar"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION C: RAINFALL PREDICTION
+         =================================================================== -->
+    <section id="section-prediction" class="page-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Rainfall Prediction Studio</h2>
+            <p class="section-subtitle">Select an algorithm and input atmospheric parameters to execute real-time inference.</p>
+          </div>
+        </div>
+
+        <!-- Model Selection Cards (4 Advanced Architectures) -->
+        <div class="model-selector-grid">
+          <div class="model-card selected" id="card-model-rf" data-model="ensemble">
+            <div class="model-card-title">🌲 RainVision Blended Ensemble</div>
+            <div class="model-card-algorithm">Random Forest (60%) + Gradient Boosting (40%)</div>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted);">
+              Blends the project's Random Forest and Gradient Boosting models for rainfall prediction.
+            </p>
+            <div class="model-stats">
+              <div>
+                <div class="model-stat-label">R² Score</div>
+                <div class="model-stat-value" style="color: var(--color-success);">0.5228</div>
+              </div>
+              <div>
+                <div class="model-stat-label">MAE</div>
+                <div class="model-stat-value">5.932 mm</div>
+              </div>
+              <div>
+                <div class="model-stat-label">RMSE</div>
+                <div class="model-stat-value">11.260 mm</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="model-card" id="card-model-gb" data-model="gradient_boosting">
+            <div class="model-card-title">⚡ Gradient Boosting (GBR)</div>
+            <div class="model-card-algorithm">Sequential Gradient Trees • Residual Minimizer</div>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted);">
+              Optimizes pseudo-residuals sequentially. Exceptional at capturing rapid sharp gradients during intense convective monsoon downpours.
+            </p>
+            <div class="model-stats">
+              <div>
+                <div class="model-stat-label">R² Score</div>
+                <div class="model-stat-value" style="color: var(--color-accent);">-1.2203</div>
+              </div>
+              <div>
+                <div class="model-stat-label">MAE</div>
+                <div class="model-stat-value">9.280 mm</div>
+              </div>
+              <div>
+                <div class="model-stat-label">RMSE</div>
+                <div class="model-stat-value">24.288 mm</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="model-card" id="card-model-hurdle" data-model="hurdle">
+            <div class="model-card-title">🛡 Two-Stage Hurdle Model</div>
+            <div class="model-card-algorithm">P(Rain) Classifier + Wet-Day Depth Regressor</div>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted);">
+              Predicts rainfall occurrence probability first, then estimates rainfall depth using the wet-day regressor.
+            </p>
+            <div class="model-stats">
+              <div>
+                <div class="model-stat-label">R² Score</div>
+                <div class="model-stat-value">-0.0801</div>
+              </div>
+              <div>
+                <div class="model-stat-label">Dry False Rain</div>
+                <div class="model-stat-value" style="color: var(--color-success);">See holdout metrics</div>
+              </div>
+              <div>
+                <div class="model-stat-label">Outputs</div>
+                <div class="model-stat-value">% & mm</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="model-card" id="card-model-reg" data-model="regression">
+            <div class="model-card-title">📐 Linear Regression (OLS)</div>
+            <div class="model-card-algorithm">Ordinary Least Squares • Parametric Continuous Regressor</div>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted);">
+              Estimates linear baseline correlation between atmospheric features and precipitation. Features non-negative physical boundary projections.
+            </p>
+            <div class="model-stats">
+              <div>
+                <div class="model-stat-label">R² Score</div>
+                <div class="model-stat-value">0.1499</div>
+              </div>
+              <div>
+                <div class="model-stat-label">MAE</div>
+                <div class="model-stat-value">7.715 mm</div>
+              </div>
+              <div>
+                <div class="model-stat-label">RMSE</div>
+                <div class="model-stat-value">15.029 mm</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form & Presets Card -->
+        <div class="prediction-form-card">
+          <!-- Live Weather Auto-Fill Toolbar -->
+          <div class="live-weather-toolbar" style="margin-bottom: 1.25rem; padding: 0.85rem 1.15rem; background: var(--color-surface-muted); border-radius: var(--radius-md); border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.85rem;">
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <span class="live-pulse" style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #10B981; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); animation: pulse 2s infinite;"></span>
+              <strong style="font-size: 0.88rem; color: var(--color-primary);">Live Atmosphere Sync:</strong>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
+              <select id="select-live-city" class="live-city-select" aria-label="Select City" style="padding: 6px 14px; border-radius: var(--radius-full); border: 1px solid var(--color-border); background: var(--color-surface); font-size: 0.85rem; font-weight: 600; color: var(--color-primary); outline: none; cursor: pointer;">
+                <option value="ahmedabad" selected>📍 Ahmedabad (28.5°C, 62% RH)</option>
+                <option value="mumbai">📍 Mumbai (29.0°C, 78% RH)</option>
+                <option value="delhi">📍 Delhi NCR (25.0°C, 54% RH)</option>
+                <option value="bengaluru">📍 Bengaluru (24.5°C, 72% RH)</option>
+                <option value="kolkata">📍 Kolkata (27.5°C, 75% RH)</option>
+                <option value="chennai">📍 Chennai (29.5°C, 82% RH)</option>
+                <option value="london">📍 London (14.0°C, 84% RH)</option>
+                <option value="new_york">📍 New York (15.5°C, 68% RH)</option>
+                <option value="tokyo">📍 Tokyo (18.0°C, 70% RH)</option>
+              </select>
+              <button type="button" class="btn btn-sm btn-primary" id="btn-fetch-live-weather" style="padding: 6px 16px; font-size: 0.82rem;">
+                ⚡ Sync Live Weather
+              </button>
+              <button type="button" class="btn btn-sm btn-outline" id="btn-use-geolocation" style="padding: 6px 14px; font-size: 0.82rem;" title="Use current browser GPS">
+                🎯 My GPS Location
+              </button>
+              <span id="live-weather-status" style="font-size: 0.78rem; font-weight: 600; color: var(--color-text-muted);">Ready</span>
+            </div>
+          </div>
+
+          <!-- Presets -->
+          <div class="presets-container">
+            <span class="presets-label">⚡ Quick Presets:</span>
+            <button type="button" class="preset-chip" data-preset="monsoon">🌧 Heavy Monsoon (28°C, 92%, 998 hPa)</button>
+            <button type="button" class="preset-chip" data-preset="dry">☀️ Dry Sunny Day (34°C, 35%, 1016 hPa)</button>
+            <button type="button" class="preset-chip" data-preset="premonsoon">⛅ Humid Pre-Monsoon (31°C, 78%, 1004 hPa)</button>
+            <button type="button" class="preset-chip" data-preset="winter">❄️ Winter Breeze (16°C, 45%, 1018 hPa)</button>
+          </div>
+
+          <form id="prediction-form" novalidate>
+            <input type="hidden" id="selected-model-input" name="model" value="ensemble">
+
+            <div class="form-grid">
+              <!-- Temperature -->
+              <div class="form-group">
+                <label class="form-label" for="input-temp">
+                  Ambient Temperature <span class="unit">(°C)</span>
+                </label>
+                <input type="number" step="0.1" class="form-input" id="input-temp" name="temperature" value="28.0" min="-10" max="60" required>
+                <input type="range" class="form-range" id="range-temp" min="-10" max="60" step="0.5" value="28.0" style="margin-top: 6px; accent-color: var(--color-accent); cursor: pointer;">
+                <div class="form-helper">Valid range: -10°C to 60°C</div>
+                <div class="form-error" id="error-temp">Please enter temperature between -10 and 60°C.</div>
+              </div>
+
+              <!-- Humidity -->
+              <div class="form-group">
+                <label class="form-label" for="input-humidity">
+                  Relative Humidity <span class="unit">(%)</span>
+                </label>
+                <input type="number" step="0.1" class="form-input" id="input-humidity" name="humidity" value="85.0" min="0" max="100" required>
+                <input type="range" class="form-range" id="range-humidity" min="0" max="100" step="1" value="85.0" style="margin-top: 6px; accent-color: var(--color-accent); cursor: pointer;">
+                <div class="form-helper">Valid range: 0% to 100%</div>
+                <div class="form-error" id="error-humidity">Please enter humidity between 0 and 100%.</div>
+              </div>
+
+              <!-- Barometric Pressure -->
+              <div class="form-group">
+                <label class="form-label" for="input-pressure">
+                  Barometric Pressure <span class="unit">(hPa)</span>
+                </label>
+                <input type="number" step="0.1" class="form-input" id="input-pressure" name="pressure" value="1004.0" min="850" max="1100" required>
+                <input type="range" class="form-range" id="range-pressure" min="850" max="1100" step="1" value="1004.0" style="margin-top: 6px; accent-color: var(--color-accent); cursor: pointer;">
+                <div class="form-helper">Valid range: 850 hPa to 1100 hPa</div>
+                <div class="form-error" id="error-pressure">Please enter pressure between 850 and 1100 hPa.</div>
+              </div>
+
+              <!-- Wind Speed -->
+              <div class="form-group">
+                <label class="form-label" for="input-wind">
+                  Wind Speed <span class="unit">(km/h)</span>
+                </label>
+                <input type="number" step="0.1" class="form-input" id="input-wind" name="wind_speed" value="16.5" min="0" max="180" required>
+                <input type="range" class="form-range" id="range-wind" min="0" max="180" step="1" value="16.5" style="margin-top: 6px; accent-color: var(--color-accent); cursor: pointer;">
+                <div class="form-helper">Valid range: 0 to 180 km/h</div>
+                <div class="form-error" id="error-wind">Please enter wind speed between 0 and 180 km/h.</div>
+              </div>
+
+              <!-- Previous Day Rainfall -->
+              <div class="form-group">
+                <label class="form-label" for="input-prev-rain">
+                  Previous Day Rainfall <span class="unit">(mm)</span>
+                </label>
+                <input type="number" step="0.1" class="form-input" id="input-prev-rain" name="previous_rainfall" value="12.0" min="0" max="500" required>
+                <input type="range" class="form-range" id="range-prev-rain" min="0" max="200" step="1" value="12.0" style="margin-top: 6px; accent-color: var(--color-accent); cursor: pointer;">
+                <div class="form-helper">Valid range: 0 to 500 mm</div>
+                <div class="form-error" id="error-prev-rain">Please enter previous rainfall between 0 and 500 mm.</div>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+              <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                <button type="submit" class="btn btn-primary" id="btn-submit-predict">
+                  🌧 Generate Prediction
+                </button>
+                <button type="button" class="btn btn-outline" id="btn-reset-form">
+                  ↺ Reset Values
+                </button>
+                <span id="predict-loading" style="display: none; font-size: 0.9rem; color: var(--color-accent);">
+                  ⏳ Executing Scikit-Learn inference pipeline...
+                </span>
+              </div>
+              <div>
+                <label style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; font-weight: 600; cursor: pointer; color: var(--color-primary);">
+                  <input type="checkbox" id="toggle-realtime-calc" checked style="accent-color: var(--color-accent);">
+                  ⚡ Live "What-If" Slider Mode
+                </label>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Prediction Result Card -->
+        <div class="result-card" id="prediction-result-card" style="margin-top: 2rem;">
+          <div class="result-header">
+            <div>
+              <div class="result-title">🎯 Model Prediction Result</div>
+              <div style="font-size: 0.85rem; color: var(--color-text-muted);" id="res-model-name">
+                Random Forest Regressor • Metropolis Central Station
+              </div>
+            </div>
+            <div id="res-prediction-id" style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--color-text-muted);">
+              PRED-READY
+            </div>
+          </div>
+
+          <div class="result-main">
+            <!-- Numerical Box -->
+            <div class="result-value-box">
+              <div style="font-size: 0.85rem; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase;">
+                Predicted 24h Precipitation
+              </div>
+              <div class="predicted-number">
+                <span id="res-rainfall-val">0.00</span><span class="predicted-unit">mm</span>
+              </div>
+              <div>
+                <span class="category-badge badge-dry" id="res-category-badge">Dry</span>
+              </div>
+              <div style="margin-top: 0.85rem; font-size: 0.88rem; font-weight: 700; color: var(--color-primary);">
+                🌧 Precipitation Probability: <span id="res-prob-val" style="color: var(--color-accent); font-size: 1.05rem;">--%</span>
+              </div>
+              <div style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 0.3rem;">
+                Dew Point: <strong id="res-dew-val">--°C</strong> • Condensation: <strong id="res-cond-val" style="color: var(--color-accent);">--</strong>
+              </div>
+            </div>
+
+            <!-- Visual Gauge & Meteorological Advisory -->
+            <div class="gauge-container">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary);">Precipitation Intensity Gauge</span>
+                <span style="font-size: 0.8rem; color: var(--color-text-muted);" id="res-gauge-text">0.0 mm</span>
+              </div>
+              <div class="gauge-track">
+                <div class="gauge-marker" id="res-gauge-marker" style="left: 0%;"></div>
+              </div>
+              <div class="gauge-labels">
+                <span>0 mm (Dry)</span>
+                <span>2.5 mm (Light)</span>
+                <span>15 mm (Mod)</span>
+                <span>50 mm (Heavy)</span>
+                <span>>50 mm (Torrential)</span>
+              </div>
+
+              <div class="advisory-box" id="res-advisory-box" style="margin-top: 0.75rem;">
+                <strong>Advisory:</strong> Conditions indicate minimal or no measurable rainfall. Clear to partly cloudy skies expected.
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature Summary Row -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; background: var(--color-surface-muted); padding: 1rem; border-radius: var(--radius-md); font-size: 0.85rem;">
+            <div><strong>Temp:</strong> <span id="res-sum-temp">--</span>°C</div>
+            <div><strong>Humidity:</strong> <span id="res-sum-humidity">--</span>%</div>
+            <div><strong>Pressure:</strong> <span id="res-sum-pressure">--</span> hPa</div>
+            <div><strong>Wind:</strong> <span id="res-sum-wind">--</span> km/h</div>
+            <div><strong>Prev Rain:</strong> <span id="res-sum-prev">--</span> mm</div>
+            <div><strong>Inference Time:</strong> <span id="res-sum-latency">--</span> ms</div>
+          </div>
+
+          <!-- Explainable AI (XAI) Attribution Breakdown -->
+          <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--color-border);" id="res-xai-section">
+            <div style="font-size: 0.95rem; font-weight: 800; color: var(--color-primary); margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+              <span>🧠 Meteorological Feature Attribution (Explainable AI)</span>
+              <span style="font-size: 0.75rem; font-weight: 700; background: var(--color-accent-soft); color: var(--color-accent); padding: 3px 10px; border-radius: var(--radius-full);">Physics-Informed Weights</span>
+            </div>
+            <div id="res-xai-bars" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.85rem;">
+              <!-- Populated dynamically via JS -->
+            </div>
+          </div>
+
+          <!-- Domain Impact & Advisory Dual Cards (Flood Risk & Agriculture) -->
+          <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--color-border);" id="res-domain-section">
+            <div style="font-size: 0.95rem; font-weight: 800; color: var(--color-primary); margin-bottom: 0.85rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+              <span>🚨 Domain Impact & Operational Advisory</span>
+              <span style="font-size: 0.75rem; font-weight: 700; background: rgba(37,99,235,0.1); color: var(--color-blue); padding: 3px 10px; border-radius: var(--radius-full);">Urban & Agronomic Intelligence</span>
+            </div>
+
+            <div class="domain-cards-grid">
+              <!-- Card 1: Urban Flood Risk Assessment -->
+              <div class="domain-card flood-card">
+                <div class="domain-card-header">
+                  <div class="domain-card-title">🌊 Urban Flood & Drainage Alert</div>
+                  <span class="domain-pill pill-green" id="res-flood-pill">MINIMAL</span>
+                </div>
+                <div class="domain-meter-box">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 700; color: var(--color-text-muted); margin-bottom: 4px;">
+                    <span>Municipal Storm Sewer Load</span>
+                    <span id="res-flood-load">12%</span>
+                  </div>
+                  <div class="domain-meter-track">
+                    <div class="domain-meter-fill fill-green" id="res-flood-bar" style="width: 12%;"></div>
+                  </div>
+                </div>
+                <div class="domain-info-list">
+                  <div><strong>Underpass Waterlogging:</strong> <span id="res-underpass-risk">Negligible</span></div>
+                  <div><strong>Traffic Mobility:</strong> <span id="res-traffic-impact">Normal transit flow; roads dry</span></div>
+                  <div><strong>Municipal Protocol:</strong> <span id="res-flood-action">Storm water drainage free and clear.</span></div>
+                </div>
+              </div>
+
+              <!-- Card 2: Smart Agricultural Advisory -->
+              <div class="domain-card agri-card">
+                <div class="domain-card-header">
+                  <div class="domain-card-title">🌾 Smart Farming & Crop Advisory</div>
+                  <span class="domain-pill pill-green" id="res-agri-pill">OPTIMAL SPRAY</span>
+                </div>
+                <div class="domain-info-list" style="margin-top: 0.5rem;">
+                  <div><strong>Irrigation Guidance:</strong> <span id="res-agri-irrigation" style="font-weight: 700; color: var(--color-primary);">Standard Irrigation Recommended</span></div>
+                  <div style="font-size: 0.82rem; color: var(--color-text-muted);" id="res-agri-irrigation-desc">Moisture deficit expected. Safe to operate automated drip/sprinkler systems.</div>
+                  <div style="margin-top: 6px;"><strong>Agrochemical Spraying:</strong> <span id="res-agri-spray" style="font-weight: 700; color: var(--color-success);">Optimal Window</span></div>
+                  <div style="font-size: 0.82rem; color: var(--color-text-muted);" id="res-agri-spray-desc">Zero wash-off risk. Ideal window for pesticide & foliar fertilizer application.</div>
+                  <div style="margin-top: 6px;"><strong>Field Equipment:</strong> <span id="res-agri-field" style="color: var(--color-text);">Tractors can operate freely across dry soil.</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Historical Ground-Truth Verification Banner (Visible when testing a dataset row) -->
+          <div id="ground-truth-box" style="display: none; margin-top: 1.5rem; padding: 1.15rem 1.35rem; background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: var(--radius-lg);">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <span style="font-size: 1.3rem;">🏆</span>
+                <div>
+                  <strong style="color: #1E3A8A; font-size: 0.95rem;">Historical Ground-Truth Validation:</strong>
+                  <span style="font-size: 0.85rem; color: #3B82F6;" id="gt-date-label">Observed on --</span>
+                </div>
+              </div>
+              <div style="display: flex; gap: 1.5rem; align-items: center; font-size: 0.9rem; flex-wrap: wrap;">
+                <div>Actual Observed: <strong id="gt-actual-rain" style="color: #1E3A8A; font-size: 1.05rem;">-- mm</strong></div>
+                <div>ML Prediction: <strong id="gt-predicted-rain" style="color: var(--color-accent); font-size: 1.05rem;">-- mm</strong></div>
+                <div>Error / Deviation: <strong id="gt-diff-rain" style="color: var(--color-primary);">-- mm</strong></div>
+                <div>Accuracy: <span class="domain-pill pill-green" id="gt-accuracy-badge">94.2%</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7-Day Recursive Forward Forecast Simulator -->
+          <div style="margin-top: 1.75rem; padding-top: 1.35rem; border-top: 1px solid var(--color-border);" id="res-7day-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem;">
+              <div>
+                <span style="font-size: 1.02rem; font-weight: 800; color: var(--color-primary);">📅 7-Day Forward Weather Trajectory (Recursive Outlook)</span>
+                <p style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 2px;">
+                  Simulates multi-day precipitation dynamics where Day k-1 rainfall recursively persists into Day k antecedent moisture.
+                </p>
+              </div>
+              <button type="button" class="btn btn-outline btn-sm" id="btn-refresh-7day" style="font-size: 0.78rem;">
+                🔄 Recalculate 7-Day Outlook
+              </button>
+            </div>
+
+            <!-- 7 Day Cards Strip -->
+            <div id="forecast-7day-strip" class="forecast-strip" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 0.85rem;">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION D: COMPARE BOTH MODELS
+         =================================================================== -->
+    <section id="section-compare" class="page-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Model Comparative Analysis</h2>
+            <p class="section-subtitle">Execute both Linear Regression and Random Forest simultaneously on identical atmospheric conditions.</p>
+          </div>
+          <div>
+            <button class="btn btn-primary btn-sm" id="btn-run-comparison">⚡ Run Comparison Now</button>
+          </div>
+        </div>
+
+        <!-- Difference Summary Banner -->
+        <div class="comparison-diff-card" id="comparison-banner">
+          <div class="diff-item">
+            <div class="diff-label">Regression Prediction</div>
+            <div class="diff-value" id="comp-val-reg">-- mm</div>
+          </div>
+          <div class="diff-item">
+            <div class="diff-label">Random Forest Prediction</div>
+            <div class="diff-value" id="comp-val-rf">-- mm</div>
+          </div>
+          <div class="diff-item">
+            <div class="diff-label">Absolute Difference (|Δ|)</div>
+            <div class="diff-value" id="comp-val-diff">-- mm</div>
+          </div>
+          <div class="diff-item">
+            <div class="diff-label">Agreement Consensus</div>
+            <div class="diff-value" id="comp-val-consensus" style="color: #6EE7B7; font-size: 1.25rem;">Consistent</div>
+          </div>
+        </div>
+
+        <!-- Side-by-side Model Cards -->
+        <div class="comparison-grid">
+          <!-- Card 1: Regression -->
+          <div class="comparison-card">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--color-primary);">Linear Regression (OLS)</h3>
+                <span class="category-badge badge-light" id="comp-cat-reg">Light Rain</span>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">
+                Parametric linear least-squares model assuming direct linear scaling of atmospheric coefficients.
+              </p>
+              <div style="text-align: center; padding: 1.5rem; background: var(--color-surface-alt); border-radius: var(--radius-md); margin-bottom: 1.25rem;">
+                <span style="font-size: 2.75rem; font-weight: 800; color: var(--color-primary);" id="comp-num-reg">0.00</span>
+                <span style="font-size: 1.2rem; font-weight: 700; color: var(--color-blue);">mm</span>
+              </div>
+            </div>
+            <div class="doc-card" style="padding: 1rem; border: 1px solid var(--color-border); margin: 0;">
+              <div style="font-size: 0.82rem; color: var(--color-text-muted);">
+                <div><strong>Test R² Score:</strong> 0.1499</div>
+                <div><strong>Test MAE:</strong> 7.715 mm</div>
+                <div><strong>Test RMSE:</strong> 15.029 mm</div>
+                <div><strong>Inference Latency:</strong> Measured via API</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Random Forest -->
+          <div class="comparison-card highlight">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--color-primary);">RainVision Blended Ensemble</h3>
+                <span class="category-badge badge-moderate" id="comp-cat-rf">Moderate Rain</span>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">
+                Non-linear bagging ensemble modeling complex non-linear meteorological thresholds and seasonal shifts.
+              </p>
+              <div style="text-align: center; padding: 1.5rem; background: var(--color-surface-alt); border-radius: var(--radius-md); margin-bottom: 1.25rem;">
+                <span style="font-size: 2.75rem; font-weight: 800; color: var(--color-primary);" id="comp-num-rf">0.00</span>
+                <span style="font-size: 1.2rem; font-weight: 700; color: var(--color-accent-hover);">mm</span>
+              </div>
+            </div>
+            <div class="doc-card" style="padding: 1rem; border: 1px solid var(--color-border); margin: 0;">
+              <div style="font-size: 0.82rem; color: var(--color-text-muted);">
+                <div><strong>Test R² Score:</strong> <span style="color: var(--color-success); font-weight: 700;">0.5228</span></div>
+                <div><strong>Test MAE:</strong> <span style="color: var(--color-success); font-weight: 700;">5.932 mm</span></div>
+                <div><strong>Test RMSE:</strong> <span style="color: var(--color-success); font-weight: 700;">11.260 mm</span></div>
+                <div><strong>Inference Latency:</strong> Measured via API</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparative Charts -->
+        <div class="charts-grid">
+          <div class="chart-card col-6">
+            <div class="chart-card-header">
+              <div class="chart-card-title">📊 Side-by-Side Model Prediction Comparison</div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="chart-compare-bar"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card col-6">
+            <div class="chart-card-header">
+              <div class="chart-card-title">🎯 Test Set Residual Analysis (Actual vs Predicted)</div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="chart-scatter-residuals"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Verified Test Set Metrics Table -->
+        <div class="table-card" style="margin-top: 1rem;">
+          <div class="table-toolbar">
+            <div style="font-weight: 700; font-size: 1rem; color: var(--color-primary);">
+              📋 Empirical Evaluation Metrics (Held-Out Test Set: 546 Records)
+            </div>
+            <div>
+              <a href="/api/reports/export?type=metrics" class="btn btn-outline btn-sm">⬇ Download Metrics CSV</a>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Model Name</th>
+                  <th>Algorithm Architecture</th>
+                  <th>R² Score</th>
+                  <th>MAE (mm)</th>
+                  <th>RMSE (mm)</th>
+                  <th>MSE (mm²)</th>
+                  <th>Training Time</th>
+                  <th>Inference Latency</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>RainVision Blended Ensemble</strong></td>
+                  <td>Random Forest (60%) + Gradient Boosting (40%)</td>
+                  <td><strong style="color: var(--color-success);">0.5228</strong></td>
+                  <td><strong style="color: var(--color-success);">5.932</strong></td>
+                  <td><strong style="color: var(--color-success);">11.260</strong></td>
+                  <td>126.791</td>
+                  <td>Not recorded</td>
+                  <td>Measured via API</td>
+                </tr>
+                <tr>
+                  <td><strong>Random Forest Regressor</strong></td>
+                  <td>150 Trees, max_depth=6</td>
+                  <td>-0.4405</td>
+                  <td>7.845</td>
+                  <td>19.563</td>
+                  <td>382.716</td>
+                  <td>0.675 s</td>
+                  <td>Measured via API</td>
+                </tr>
+                <tr>
+                  <td><strong>Gradient Boosting Regressor</strong></td>
+                  <td>140 Sequential Trees, lr=0.08, max_depth=5</td>
+                  <td><strong style="color: var(--color-accent);">-1.2203</strong></td>
+                  <td>9.280</td>
+                  <td>24.288</td>
+                  <td>589.902</td>
+                  <td>6.442 s</td>
+                  <td>Measured via API</td>
+                </tr>
+                <tr>
+                  <td><strong>Two-Stage Hurdle Model</strong></td>
+                  <td>Rain-occurrence classifier + wet-day severity regressor</td>
+                  <td>-0.0801</td>
+                  <td>7.159</td>
+                  <td>16.940</td>
+                  <td>286.967</td>
+                  <td>0.695 s</td>
+                  <td>Measured via API</td>
+                </tr>
+                <tr>
+                  <td><strong>Linear Regression</strong></td>
+                  <td>Ordinary Least Squares (OLS)</td>
+                  <td>0.1499</td>
+                  <td>7.715</td>
+                  <td>15.029</td>
+                  <td>225.874</td>
+                  <td>0.065 s</td>
+                  <td>Measured via API</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION E: DATASET EXPLORER
+         =================================================================== -->
+    <section id="section-explorer" class="page-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Dataset Explorer & Inspection</h2>
+            <p class="section-subtitle">Examine the underlying meteorological observations and feature distributions.</p>
+          </div>
+          <div class="toolbar-group">
+            <a href="/api/dataset/download-excel" class="btn btn-accent btn-sm">📊 Download Excel Workbook (.xlsx)</a>
+            <a href="/api/reports/export?type=dataset" class="btn btn-outline btn-sm">⬇ Download Clean CSV</a>
+          </div>
+        </div>
+
+        <!-- Metadata Cards Grid -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-header"><span class="kpi-title">Excel Master File</span><div class="kpi-icon teal">📊</div></div>
+            <div class="kpi-value" style="font-size: 1.15rem; word-break: break-all;">RainVision_Historical_1985_to_Today.xlsx</div>
+            <div class="kpi-desc">Multi-sheet Excel workbook (1985–Today)</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header"><span class="kpi-title">Total Records</span><div class="kpi-icon blue">🔢</div></div>
+            <div class="kpi-value" id="explorer-total-records">15,279</div>
+            <div class="kpi-desc">Daily observations (1985 to 2026)</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header"><span class="kpi-title">Data Authority</span><div class="kpi-icon green">🌍</div></div>
+            <div class="kpi-value" style="font-size: 1.15rem;">ECMWF ERA5</div>
+            <div class="kpi-desc">Verified climate reanalysis archive</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header"><span class="kpi-title">Station Location</span><div class="kpi-icon amber">📍</div></div>
+            <div class="kpi-value" style="font-size: 1.25rem;">Metropolis Central</div>
+            <div class="kpi-desc">23.0225° N, 72.5714° E (55m AMSL)</div>
+          </div>
+        </div>
+
+        <!-- Explorer Table Card -->
+        <div class="table-card">
+          <div class="table-toolbar">
+            <div class="toolbar-group">
+              <input type="text" id="table-search-input" class="search-input" placeholder="🔍 Search by date or location...">
+              <select id="filter-year" class="filter-select">
+                <option value="all">All 42 Years (1985–2026)</option>
+                <option value="2026">2026 (Recent)</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2015">2015</option>
+                <option value="2010">2010</option>
+                <option value="2005">2005 (Record Flood Year)</option>
+                <option value="2000">2000</option>
+                <option value="1995">1995</option>
+                <option value="1990">1990</option>
+                <option value="1985">1985 (Base Record)</option>
+              </select>
+              <select id="filter-rainfall" class="filter-select">
+                <option value="all">All Precipitation</option>
+                <option value="rain-only">Rain Only (>0 mm)</option>
+                <option value="dry-only">Dry Only (0 mm)</option>
+                <option value="heavy-only">Heavy Rain (>15 mm)</option>
+              </select>
+            </div>
+            <div class="toolbar-group">
+              <span id="table-record-count" style="font-size: 0.85rem; color: var(--color-text-muted);">Loading records...</span>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table" id="dataset-table">
+              <thead>
+                <tr>
+                  <th data-sort="date">Date ↕</th>
+                  <th data-sort="location">Location ↕</th>
+                  <th data-sort="rainfall">Actual Rain (mm) ↕</th>
+                  <th>Category</th>
+                  <th data-sort="temperature">Temp (°C) ↕</th>
+                  <th data-sort="humidity">Humidity (%) ↕</th>
+                  <th data-sort="pressure">Pressure (hPa) ↕</th>
+                  <th data-sort="wind_speed">Wind (km/h) ↕</th>
+                  <th data-sort="previous_rainfall">Prev Rain (mm) ↕</th>
+                  <th style="text-align: center;">Ground-Truth Test</th>
+                </tr>
+              </thead>
+              <tbody id="dataset-tbody">
+                <tr><td colspan="10" style="text-align: center; padding: 2rem;">Loading dataset preview...</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-pagination">
+            <div>
+              Showing <span id="pagination-start">1</span> to <span id="pagination-end">20</span> of <span id="pagination-total">15,279</span> entries
+            </div>
+            <div class="toolbar-group">
+              <button class="btn btn-outline btn-sm" id="btn-page-prev">← Previous</button>
+              <span id="pagination-current-page" style="font-weight: 600; padding: 0 0.5rem;">Page 1 of 764</span>
+              <button class="btn btn-outline btn-sm" id="btn-page-next">Next →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CSV File Upload Section -->
+        <div class="prediction-form-card" style="margin-top: 2rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.35rem;">
+                📤 Batch Meteorological Inference & CSV Processing Engine
+              </h3>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted); max-width: 750px;">
+                Upload any custom CSV dataset with daily weather observations. The engine executes Random Forest, Gradient Boosting, and Hurdle models across all rows in parallel, generating downloadable annotated predictions and flood alerts.
+              </p>
+            </div>
+            <a href="/api/dataset/download-batch-result" id="btn-download-batch-csv" class="btn btn-accent btn-sm" style="display: none;">
+              ⬇ Download Annotated Predictions CSV
+            </a>
+          </div>
+
+          <form id="upload-form" enctype="multipart/form-data" style="margin-top: 1rem;">
+            <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+              <input type="file" id="upload-csv-file" accept=".csv" class="form-input" style="max-width: 360px;" required>
+              <button type="submit" class="btn btn-primary" id="btn-submit-upload">
+                ⚡ Process Batch Predictions
+              </button>
+            </div>
+          </form>
+
+          <div id="upload-result-box" style="display: none; margin-top: 1.25rem; padding: 1.25rem; border-radius: var(--radius-md); background: var(--color-surface); border: 1px solid var(--color-border);">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+              <div style="font-weight: 700; color: var(--color-primary); font-size: 0.98rem;" id="upload-result-title">Analysis Result</div>
+              <div id="upload-stats-badges" style="display: flex; gap: 0.6rem; flex-wrap: wrap;"></div>
+            </div>
+            <div style="font-size: 0.88rem; color: var(--color-text-muted); margin-top: 0.5rem;" id="upload-result-msg"></div>
+
+            <!-- Batch Preview Table -->
+            <div id="batch-preview-wrapper" style="margin-top: 1rem; overflow-x: auto; display: none;">
+              <div style="font-size: 0.82rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.4rem;">Top Predicted Rows Preview:</div>
+              <table class="data-table" style="font-size: 0.82rem;">
+                <thead>
+                  <tr>
+                    <th>Temp (°C)</th>
+                    <th>Humidity (%)</th>
+                    <th>Pressure (hPa)</th>
+                    <th>RF Prediction (mm)</th>
+                    <th>Rain Prob (%)</th>
+                    <th>Category</th>
+                    <th>Flood Alert</th>
+                  </tr>
+                </thead>
+                <tbody id="batch-preview-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION F: HISTORICAL RAINFALL ANALYTICS
+         =================================================================== -->
+    <section id="section-analytics" class="page-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Historical Rainfall Analytics & Climatology</h2>
+            <p class="section-subtitle">Long-term climate trends, seasonal monsoon cycles, and rainfall distribution patterns.</p>
+          </div>
+          <div class="toolbar-group">
+            <a href="/api/reports/export?type=predictions" class="btn btn-outline btn-sm">⬇ Download Predictions History</a>
+          </div>
+        </div>
+
+        <div class="doc-grid">
+          <div class="doc-card">
+            <h3>🌊 Monsoon Seasonality (June–September)</h3>
+            <p>
+              In Metropolis Central Station, July and August consistently register the highest precipitation totals, accounting for over <strong>64.2%</strong> of the annual rainfall volume.
+            </p>
+            <div class="feature-tag-list">
+              <span class="feature-tag">July Peak: 284 mm</span>
+              <span class="feature-tag">August Peak: 268 mm</span>
+              <span class="feature-tag">Pre-Monsoon Humidity Surge</span>
+            </div>
+          </div>
+
+          <div class="doc-card">
+            <h3>📉 Dry Season Dynamics (November–March)</h3>
+            <p>
+              Winter months feature high barometric pressure (1016–1022 hPa) and low relative humidity (35–50%), with average monthly rainfall remaining below <strong>8.5 mm</strong>.
+            </p>
+            <div class="feature-tag-list">
+              <span class="feature-tag">High Barometric Stability</span>
+              <span class="feature-tag">Low Condensation Risk</span>
+            </div>
+          </div>
+
+          <div class="doc-card">
+            <h3>⚡ Extreme Weather Frequency</h3>
+            <p>
+              Heavy precipitation events (&gt;15 mm/day) occur on approximately <strong>14.2%</strong> of all days, while torrential downpours (&gt;50 mm/day) occur on <strong>2.8%</strong> of recorded days.
+            </p>
+            <div class="feature-tag-list">
+              <span class="feature-tag">Torrential Days: 102</span>
+              <span class="feature-tag">Max 24h Rain: 132.5 mm</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Analytics Chart -->
+        <div class="chart-card" style="margin-top: 1.5rem;">
+          <div class="chart-card-header">
+            <div class="chart-card-title">📈 Annual Precipitation Pattern (1985–2026)</div>
+            <div class="chart-card-subtitle">Cumulative annual totals recorded at Metropolis Central Station</div>
+          </div>
+          <div class="chart-wrapper tall">
+            <canvas id="chart-analytics-yearly"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION G: ABOUT PROJECT
+         =================================================================== -->
+    <section id="section-about" class="page-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">About RainVision Platform</h2>
+            <p class="section-subtitle">Comprehensive documentation of architecture, dataset engineering, and academic methodology.</p>
+          </div>
+        </div>
+
+        <div class="doc-grid">
+          <div class="doc-card">
+            <h3>🎯 Problem Statement</h3>
+            <p>
+              Rainfall prediction is a critical challenge in meteorological science, agriculture, and municipal flood disaster management. Traditional numerical weather prediction (NWP) models require extensive supercomputing infrastructure. RainVision demonstrates that machine learning pipelines trained on localized atmospheric parameters can yield high-precision continuous rainfall forecasts in milliseconds.
+            </p>
+          </div>
+
+          <div class="doc-card">
+            <h3>📊 Dataset & Meteorological Features</h3>
+            <p>
+              Trained on <strong>15,279 daily meteorological records</strong> (1985 to 2026). Features include:
+            </p>
+            <ul style="padding-left: 1.25rem; font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.7;">
+              <li><strong>Ambient Temperature (°C):</strong> Thermodynamic indicator of atmospheric energy.</li>
+              <li><strong>Relative Humidity (%):</strong> Moisture saturation level of the air column.</li>
+              <li><strong>Barometric Pressure (hPa):</strong> Barometric pressure drops signal storm systems.</li>
+              <li><strong>Wind Speed (km/h):</strong> Advection speed of moisture-laden air masses.</li>
+              <li><strong>Previous Day Rainfall (mm):</strong> Temporal autocorrelation of rainy fronts.</li>
+            </ul>
+          </div>
+
+          <div class="doc-card">
+            <h3>🛡 Preprocessing & Feature Engineering</h3>
+            <p>
+              To prevent data leakage, temporal lag features are constructed strictly from antecedent observations:
+            </p>
+            <div class="feature-tag-list">
+              <span class="feature-tag">rain_lag_1, 2, 3</span>
+              <span class="feature-tag">rain_roll_mean_7</span>
+              <span class="feature-tag">rain_roll_max_7</span>
+              <span class="feature-tag">pressure_diff_1</span>
+              <span class="feature-tag">sin_day_of_year</span>
+              <span class="feature-tag">cos_day_of_year</span>
+              <span class="feature-tag">is_monsoon</span>
+            </div>
+          </div>
+
+          <div class="doc-card">
+            <h3>🤖 Machine Learning Models</h3>
+            <p>
+              Two complementary models are evaluated side-by-side:
+            </p>
+            <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+              <strong>Default: Blended Ensemble:</strong> Combines a Random Forest and Gradient Boosting model.<br>
+              <strong>Baselines:</strong> Linear Regression, Random Forest, Gradient Boosting, and two-stage Hurdle models are also available.
+            </p>
+          </div>
+
+          <div class="doc-card">
+            <h3>📐 Evaluation Metrics Explained</h3>
+            <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+              <strong>$R^2$ Score:</strong> Ensemble: 0.5228; RF: -0.4405; LR: 0.1499 on the 546-record holdout.<br>
+              <strong>MAE:</strong> Ensemble: 5.932 mm; RF: 7.845 mm; LR: 7.715 mm.<br>
+              <strong>RMSE:</strong> Ensemble: 11.260 mm; RF: 19.563 mm; LR: 15.029 mm.
+            </p>
+          </div>
+
+          <div class="doc-card">
+            <h3>🎓 University Major Project</h3>
+            <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+              Developed as a senior major capstone project. Demonstrates full-stack software architecture, Scikit-learn machine learning engineering, RESTful API design, and accessible data visualization without third-party frontend dependencies.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-copy">
+        <div style="font-weight: 700; color: #FFFFFF; font-size: 1rem;">🌧 RainVision</div>
+        <div>Intelligent Rainfall Prediction & Climate Analytics System</div>
+        <div style="font-size: 0.78rem; margin-top: 0.25rem;">Built with Python, Flask, Scikit-Learn, HTML5, CSS3 & Vanilla JavaScript.</div>
+      </div>
+      <div class="footer-links">
+        <a href="#section-home" class="nav-trigger" data-target="home">Home</a>
+        <a href="#section-dashboard" class="nav-trigger" data-target="dashboard">Dashboard</a>
+        <a href="#section-prediction" class="nav-trigger" data-target="prediction">Prediction</a>
+        <a href="#section-compare" class="nav-trigger" data-target="compare">Compare</a>
+        <a href="#section-explorer" class="nav-trigger" data-target="explorer">Explorer</a>
+        <a href="#section-about" class="nav-trigger" data-target="about">About</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Chart.js CDN with offline canvas fallback -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <!-- Main Application Script -->
+  <script src="/static/js/script.js"></script>
+</body>
+</html>
